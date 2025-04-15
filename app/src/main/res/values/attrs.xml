@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="custom_navigation_bottom">
+        <attr name="custom_width_group" format="dimension" />
+        <attr name="custom_width_normal" format="dimension" />
+        <attr name="custom_width_main" format="dimension" />
+        <attr name="background_group" format="integer" />
+        <attr name="normal_margin" format="dimension"/>
+        <attr name="main_margin" format="dimension"/>
+
+    </declare-styleable>
+</resources>
