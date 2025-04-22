@@ -17,11 +17,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(LayoutInflater.from(this))
         setContentView(binding.root)
 
-//        val config = NavigationConfig.with(this)
-//            .setNavigationRoot(binding.groupNavigation)
-//            .addNavigationCell(Navigation(R.drawable.baseline_add_24,""))
-//            .addNavigationCell(Navigation(R.drawable.baseline_add_24,""))
-//            .setup()
         this.setSupportActionBar(binding.toolbar)
 
         val navController = findNavController(R.id.nav_host_fragment)
