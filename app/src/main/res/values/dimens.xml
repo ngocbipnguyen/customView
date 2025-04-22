@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="fab_size_default">56dp</dimen>
+    <dimen name="nav_width_default">84dp</dimen>
+    <dimen name="curve_bottom_offset">12dp</dimen>
+    <dimen name="fab_top_offset">8dp</dimen>
+</resources>

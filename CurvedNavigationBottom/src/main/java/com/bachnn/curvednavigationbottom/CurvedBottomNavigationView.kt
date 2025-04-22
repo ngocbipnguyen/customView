@@ -386,11 +386,16 @@ class CurvedBottomNavigationView @JvmOverloads constructor(
             drawable
         }
     }
+
     private fun initializeBottomItems(activeIndex: Int) {
         removeAllViews()
         val layoutBottom = LinearLayout(context)
         val typeValues = TypedValue()
-        context.theme.resolveAttribute(androidx.appcompat.R.attr.selectableItemBackground, typeValues, true)
+        context.theme.resolveAttribute(
+            androidx.appcompat.R.attr.selectableItemBackground,
+            typeValues,
+            true
+        )
         menuIcons.forEachIndexed { index, icon ->
             val menuIcon = bottomNavItemViews[index]
             menuIcon.setMenuIconDrawable(icon)
@@ -564,7 +569,7 @@ class CurvedBottomNavigationView @JvmOverloads constructor(
             PropertyValuesHolder.ofFloat(PROPERTY_CENTER_Y, fabYOffset, centerY)
         return ValueAnimator().apply {
             setValues(propertyCenterYReverse)
-            addListener(object: AnimatorListenerAdapter() {
+            addListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationStart(animation: Animator) {
                     super.onAnimationStart(animation)
                     menuAVDs[index].callback = avdUpdateCallback
@@ -685,23 +690,39 @@ class CurvedBottomNavigationView @JvmOverloads constructor(
 
     private fun computeCurve(offsetX: Int, w: Int) {
         this.cellOffsetX = offsetX
+        Log.e("computeCurve", "offsetX $offsetX ; w : $w")
         firstCurveStart.apply {
-            x = offsetX + (w / 2) - curveHalfWidth
+            x = offsetX + (w / 2) - curveHalfWidth // -
             y = bottomNavOffsetY
         }
+        Log.e("computeCurve", "firstCurveStart $firstCurveStart")
+        Log.e("computeCurve", "curveHalfWidth $curveHalfWidth ; bottomNavOffsetY $bottomNavOffsetY")
         firstCurveEnd.apply {
             x = (offsetX + (w / 2)).toFloat()
             y = layoutHeight - curveBottomOffset
         }
+        Log.e("computeCurve", "firstCurveEnd $firstCurveEnd")
+        Log.e("computeCurve", "layoutHeight $layoutHeight : layoutHeight $curveBottomOffset")
         firstCurveControlPoint1.apply {
-            x = firstCurveStart.x + topControlX
-            y = topControlY
+            x = firstCurveStart.x + topControlX // 3/2/2 fab size
+            y = topControlY // bottomNavOffsetY + 1/6/2 fab size
         }
+        Log.e("computeCurve", "firstCurveControlPoint1 $firstCurveControlPoint1")
+        Log.e(
+            "computeCurve",
+            "firstCurveStart.x ${firstCurveStart.x} : topControlX $topControlX : $topControlY"
+        )
         firstCurveControlPoint2.apply {
-            x = firstCurveEnd.x - bottomControlX
-            y = firstCurveEnd.y - bottomControlY
+            x = firstCurveEnd.x - bottomControlX // 3/2/2 fab size
+            y = firstCurveEnd.y - bottomControlY // 1/4/2 fab size
         }
 
+        Log.e("computeCurve", "firstCurveEnd $firstCurveEnd")
+        Log.e("computeCurve", "firstCurveControlPoint2 $firstCurveControlPoint2")
+        Log.e(
+            "computeCurve",
+            "bottomControlX $bottomControlX : bottomControlY $bottomControlY"
+        )
         secondCurveStart.set(firstCurveEnd.x, firstCurveEnd.y)
         secondCurveEnd.apply {
             x = offsetX + (w / 2) + curveHalfWidth
@@ -716,11 +737,6 @@ class CurvedBottomNavigationView @JvmOverloads constructor(
             x = secondCurveEnd.x - topControlX
             y = topControlY
         }
-
-        Log.e("computeCurve", "firstCurveStart $firstCurveStart")
-        Log.e("computeCurve", "firstCurveControlPoint1 $firstCurveControlPoint1")
-        Log.e("computeCurve", "firstCurveControlPoint2 $firstCurveControlPoint2")
-        Log.e("computeCurve", "firstCurveEnd $firstCurveEnd")
 
         path.apply {
             reset()
