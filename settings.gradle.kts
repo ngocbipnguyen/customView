@@ -15,4 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "customView"
 include(":app")
- 
+include(":CurvedNavigationBottom")

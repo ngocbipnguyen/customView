@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_nav_graph.xml"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.bachnn.customview.ui.HomeFragment"
+        android:label="HomeFragment" />
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.bachnn.customview.ui.SettingFragment"
+        android:label="SettingFragment" />
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="com.bachnn.customview.ui.NotificationFragment"
+        android:label="NotificationFragment" />
+</navigation>

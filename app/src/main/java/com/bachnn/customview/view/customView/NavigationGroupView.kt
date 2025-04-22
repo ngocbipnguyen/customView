@@ -118,7 +118,6 @@ class NavigationGroupView  @JvmOverloads constructor(
         ).apply {
             setMargins(0, widthParentView - widthGroupView, 0, 0)
         }
-        groupView.setBackgroundColor(context.getColor(R.color.md_theme_surfaceContainer))
         normalNavigationCells = LinkedList()
 
         this.addView(groupView)
